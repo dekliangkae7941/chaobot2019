@@ -9,15 +9,13 @@
 	//if(!mysqli_select_db($con,'chatbot')){
 	//	echo 'Database Not Select';
 	//}
-
-$con = mysql_connect('127.0.0.1','root','79417941');
-if(!$con){
-    echo 'Not Connected To Server';
-}
-if(!mysqli_select_db($con,'tutorial')){
-    echo 'Database Not Select';
-}
-
+    $Setup_Server = '127.0.0.1';
+    $Setup_User = 'root';
+    $Setup_Pwd = '79417941';
+    $Setup_Database = 'chatbot';
+    mysql_connect($Setup_Server,$Setup_User,$Setup_Pwd);
+    mysql_query("chatbot $Setup_Database");
+    mysql_query("SET NAMES UTF8");
 
 
 #-------------------------[Include]-------------------------#
