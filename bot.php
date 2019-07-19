@@ -9,6 +9,17 @@
 	//if(!mysqli_select_db($con,'chatbot')){
 	//	echo 'Database Not Select';
 	//}
+
+$con = mysql_connect('127.0.0.1','root','');
+if(!$con){
+    echo 'Not Connected To Server';
+}
+if(!mysqli_select_db($con,'tutorial')){
+    echo 'Database Not Select';
+}
+
+
+
 #-------------------------[Include]-------------------------#
 require_once('./include/line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
