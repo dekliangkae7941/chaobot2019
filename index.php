@@ -61,15 +61,6 @@ $reline1 = json_decode($reline, true);
 $reline2 = $reline1['displayName'];
 
 
-	$userId = $_POST['userId'];
-	$sql = "INSERT INTO person (userId) VALUES ('userId')";
-	if(!mysqli_query($con,$sql)){
-		echo 'Not Insert';
-	}else{
-		echo 'Inserted';
-    	}
-
-
 #-------------------------[EVENT TYPE]-------------------------#
 if ($type == 'memberJoined') {
     $text = "เมื่อมีผู้ใช้เข้ากลุ่ม";
@@ -120,7 +111,14 @@ elseif ($type == 'leave') {
     );
 }
 elseif ($type == 'follow') {
-    //$text = "เมื่อผู้ใช้กดติดตามบอท";
+	$userId = $_POST['userId'];
+	$sql = "INSERT INTO person (userId) VALUES ('userId')";
+	if(!mysqli_query($con,$sql)){
+		echo 'Not Insert';
+	}else{
+		echo 'Inserted';
+	}
+//$text = "เมื่อผู้ใช้กดติดตามบอท";
     $mreply = array(
         'replyToken' => $replyToken,
         'messages' => array(
