@@ -10,7 +10,7 @@
 	//	echo 'Database Not Select';
 	//}
 
-$con = mysql_connect('127.0.0.1','root','');
+$con = mysql_connect('127.0.0.1','root','79417941');
 if(!$con){
     echo 'Not Connected To Server';
 }
@@ -126,7 +126,14 @@ elseif ($type == 'leave') {
     );
 }
 elseif ($type == 'follow') {
-    //$text = "เมื่อผู้ใช้กดติดตามบอท";
+	$userId = $_POST['userId'];
+	$sql = "INSERT INTO person (userId) VALUES ('userId')";
+	if(!mysqli_query($con,$sql)){
+	    echo 'Not Insert';
+	}else{
+	    echo 'Inserted';
+	}
+	    //$text = "เมื่อผู้ใช้กดติดตามบอท";
     $mreply = array(
         'replyToken' => $replyToken,
         'messages' => array(
