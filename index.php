@@ -61,8 +61,8 @@ $reline1 = json_decode($reline, true);
 $reline2 = $reline1['displayName'];
 
 
-$userId = $_POST['userId'];
-	$sql = "INSERT INTO person (userID) VALUES ('userId')";
+	$userId = $_POST['userId'];
+	$sql = "INSERT INTO person (userId) VALUES ('userId')";
 	if(!mysqli_query($con,$sql)){
 		echo 'Not Insert';
 	}else{
