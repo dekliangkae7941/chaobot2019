@@ -117,13 +117,6 @@ elseif ($type == 'leave') {
     );
 }
 elseif ($type == 'follow') {
-	$userId = $_POST['userId'];
-	$sql = "INSERT INTO person (userId) VALUES ('userId')";
-	if(!mysqli_query($con,$sql)){
-	    echo 'Not Insert';
-	}else{
-	    echo 'Inserted';
-	}
 	    //$text = "เมื่อผู้ใช้กดติดตามบอท";
     $mreply = array(
         'replyToken' => $replyToken,
