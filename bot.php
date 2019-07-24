@@ -37,8 +37,6 @@ $msg_title     = $client->parseEvents()[0]['message']['title'];
 $msg_address   = $client->parseEvents()[0]['message']['address'];
 $msg_latitude  = $client->parseEvents()[0]['message']['latitude'];
 $msg_longitude = $client->parseEvents()[0]['message']['longitude'];
-<script async src="https://cse.google.com/cse.js?cx=009544805572183267925:wylrzy_8zug"></script>
-<div class="gcse-search"></div>
 #----Check title empty----#
 if (empty($msg_title)) {
     $msg_title = 'ตำแหน่งของคุณ คือ ';
