@@ -9,8 +9,7 @@
 	//if(!mysqli_select_db($con,'chatbot')){
 	//	echo 'Database Not Select';
 	//}
-    include('connect_db.php');
-
+include('connect_db.php');
 #-------------------------[Include]-------------------------#
 require_once('./include/line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
@@ -32,8 +31,6 @@ $msg_type      = $client->parseEvents()[0]['message']['type'];
 
 $post_data      = $client->parseEvents()[0]['postback']['data'];
 
-
-
 $msg_file      = $client->parseEvents()[0]['message']['fileName'];
 $msg_message   = $client->parseEvents()[0]['message']['text'];
 $msg_title     = $client->parseEvents()[0]['message']['title'];
@@ -42,7 +39,7 @@ $msg_latitude  = $client->parseEvents()[0]['message']['latitude'];
 $msg_longitude = $client->parseEvents()[0]['message']['longitude'];
 #----Check title empty----#
 if (empty($msg_title)) {
-    $msg_title = 'ที่ไหนก็ได้ โตแล้ว';
+    $msg_title = 'ตำแหน่งของคุณ คือ ';
 }
 #----command option----#
 $usertext = explode(" ", $message['text']);
@@ -63,10 +60,6 @@ $reline = json_encode($profile, true);
 $reline1 = json_decode($reline, true);
 $reline2 = $reline1['displayName'];
 
-
-
-
-
 #-------------------------[EVENT TYPE]-------------------------#
 if ($type == 'memberJoined') {
     $text = "เมื่อมีผู้ใช้เข้ากลุ่ม";
@@ -80,6 +73,7 @@ if ($type == 'memberJoined') {
         )
     );
 }
+///////////
 elseif ($type == 'memberLeft') {
     $text = "เมื่อมีผู้ใช้ออกกลุ่ม";
         $mreply = array(
@@ -92,6 +86,7 @@ elseif ($type == 'memberLeft') {
         )
     );
 }
+///////////////
 elseif ($type == 'join') {
       $text = "เมื่อบอทถูกเชิญเข้าห้อง";
     $mreply = array(
@@ -104,6 +99,7 @@ elseif ($type == 'join') {
         )
     );
 }
+///////////
 elseif ($type == 'leave') {
     $text = "เมื่อบอทถูกเตะออกจากห้อง";
         $mreply = array(
@@ -116,6 +112,7 @@ elseif ($type == 'leave') {
         )
     );
 }
+//////////////
 elseif ($type == 'follow') {
 	    //$text = "เมื่อผู้ใช้กดติดตามบอท";
     $mreply = array(
@@ -128,6 +125,7 @@ elseif ($type == 'follow') {
         )
     );
 }
+/////////////
 elseif ($type == 'unfollow') {
     $text = "เมื่อบอทถูกบล็อค";
         $mreply = array(
@@ -140,6 +138,7 @@ elseif ($type == 'unfollow') {
         )
     );
 }
+///////////
 #-------------------------[MSG TYPE]-------------------------#
 elseif ($msg_type == 'file') {
 $url = 'https://api.line.me/v2/bot/message/' . $messageid . '/content';
@@ -173,7 +172,7 @@ file_put_contents($fileFullSavePath,$result);
         )
     );
 }
-
+////////////////
 elseif ($msg_type == 'image') {
 $url = 'https://api.line.me/v2/bot/message/' . $messageid . '/content';
 $headers = array('Authorization: Bearer ' . $channelAccessToken);
@@ -206,6 +205,7 @@ file_put_contents($fileFullSavePath,$result);
         )
     );
 }
+////////////////
 elseif ($msg_type == 'video') {
   $url = 'https://api.line.me/v2/bot/message/' . $messageid . '/content';
 $headers = array('Authorization: Bearer ' . $channelAccessToken);
@@ -238,6 +238,7 @@ file_put_contents($fileFullSavePath,$result);
         )
     );
 }
+////////////////
 elseif ($msg_type == 'audio') {
   $url = 'https://api.line.me/v2/bot/message/' . $messageid . '/content';
 $headers = array('Authorization: Bearer ' . $channelAccessToken);
@@ -270,41 +271,42 @@ file_put_contents($fileFullSavePath,$result);
         )
     );
 }
+////////////////
 elseif ($msg_type == 'sticker') {
-  $stickerurl = "https://stickershop.line-scdn.net/stickershop/v1/sticker/" . $stickerId . "/android/sticker.png";
-      $mreply = array(
+$stickerurl = "https://stickershop.line-scdn.net/stickershop/v1/sticker/" . $stickerId . "/android/sticker.png";
+    $mreply = array(
         'replyToken' => $replyToken,
         'messages' => array(
-          
-array(
-        'type' => 'flex',
-        'altText' => 'Sticker!!',
-        'contents' => array(
-        'type' => 'bubble',
-        'body' => array(
-          'type' => 'box',
-          'layout' => 'vertical',
-          'spacing' => 'md',
-          'contents' => array(
             array(
-              'type' => 'text',
-          'align' => 'center',
-          'color' => '#049b1b',
-          'text' => 'USER : ' . $reline2
-      ),
-            array(
-          'type' => 'image',
-          'size' => '5xl',
-          'align' => 'center',
-          'url' => $stickerurl
-      )
+                    'type' => 'flex',
+                    'altText' => 'Sticker!!',
+                    'contents' => array(
+                    'type' => 'bubble',
+                    'body' => array(
+                        'type' => 'box',
+                        'layout' => 'vertical',
+                        'spacing' => 'md',
+                        'contents' => array(
+                                        array(
+                                        'type' => 'text',
+                                        'align' => 'center',
+                                        'color' => '#049b1b',
+                                        'text' => 'USER : ' . $reline2
+                                        ),
+                                        array(
+                                        'type' => 'image',
+                                        'size' => '5xl',
+                                        'align' => 'center',
+                                        'url' => $stickerurl
+                                        )
+                                    )
+                    )
+                    )
+            )
         )
-        )
-        )
-        )
-    )
     );
 }
+///////////////////
 elseif ($msg_type == 'location') {
 
     $uri = "https://api.openweathermap.org/data/2.5/weather?lat=" . $msg_latitude . "&lon=" . $msg_longitude . "&lang=th&units=metric&appid=bb32ab343bb6e3326f9e1bbd4e4f5d31";
@@ -338,101 +340,102 @@ elseif ($msg_type == 'location') {
     );
 
 }
-
+/////////////
 else { 
+    if ($command== 'myid') { 
 
-if ($command== 'myid') { 
+    $mreply = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'userId ของคุณคือ '.$userId,
+                    'quickReply' => array(
+                        'items' => array(
+                        array(
+                        'type' => 'action',
+                        'action' => array(
+                        'type' => 'postback',
+                        'label' => 'Postback',
+                        'data' => 'happy'
+                        )
+                        )
+                        )
+                    )
 
-  $mreply = array(
-        'replyToken' => $replyToken,
-        'messages' => array(
-            array(
-                'type' => 'text',
-                'text' => 'userId ของคุณคือ '.$userId,
-'quickReply' => array(
-    'items' => array(
-     array(
-      'type' => 'action',
-      'action' => array(
-       'type' => 'postback',
-       'label' => 'Postback',
-       'data' => 'happy'
-      )
-     )
-    )
-   )
-
+                )
             )
-        )
-    );
-}
-
-elseif ($command== 'qr' || $command== 'Qr' || $command== 'QR' || $command== 'Qrcode' || $command== 'QRcode' || $command== 'qrcode') { 
-      $url = 'https://chart.googleapis.com/chart?cht=qr&choe=UTF-8&chs=300x300&chl='.$options;
-      $mreply = array(
-        'replyToken' => $replyToken,
-        'messages' => array(
-            array(
-                'type' => 'image',
-                'originalContentUrl' => $url,
-                'previewImageUrl' => $url
+        );
+    }
+    //////////
+    elseif ($command== 'qr' || $command== 'Qr' || $command== 'QR' || $command== 'Qrcode' || $command== 'QRcode' || $command== 'qrcode') { 
+        $url = 'https://chart.googleapis.com/chart?cht=qr&choe=UTF-8&chs=300x300&chl='.$options;
+        $mreply = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'image',
+                    'originalContentUrl' => $url,
+                    'previewImageUrl' => $url
+                )
             )
-        )
-    );
-}
+        );
+    }
+    ///////////////
+    elseif ($post_data== 'happy') { 
 
-elseif ($post_data== 'happy') { 
+    $mreply = array(
+            'replyToken' => $replyToken,
+            'messages' => array(
+                array(
+                    'type' => 'text',
+                    'text' => 'Postback : happy',
+                    'quickReply' => array(
+                        'items' => array(
+                        array(
+                        'type' => 'action',
+                        'action' => array(
+                        'type' => 'postback',
+                        'label' => 'Postback',
+                        'data' => 'happy'
+                        )
+                        )
+                        )
+                    )       
 
-  $mreply = array(
-        'replyToken' => $replyToken,
-        'messages' => array(
-            array(
-                'type' => 'text',
-                'text' => 'Postback : happy',
-'quickReply' => array(
-    'items' => array(
-     array(
-      'type' => 'action',
-      'action' => array(
-       'type' => 'postback',
-       'label' => 'Postback',
-       'data' => 'happy'
-      )
-     )
-    )
-   )
-
+                )
             )
-        )
-    );
+        );
+    }
+    /////////////
+    else {
+                        $url = "https://bots.dialogflow.com/line/37d316a1-c0b5-46ca-9b85-e58789028d26/webhook";
+                        $headers = getallheaders();
+                        file_put_contents('headers.txt',json_encode($headers, JSON_PRETTY_PRINT));          
+                        file_put_contents('body.txt',file_get_contents('php://input'));
+                        $headers['Host'] = "bots.dialogflow.com";
+                        $json_headers = array();
+                        foreach($headers as $k=>$v){
+                            $json_headers[]=$k.":".$v;
+                        }
+                        $inputJSON = file_get_contents('php://input');
+                        $ch = curl_init();
+                        curl_setopt( $ch, CURLOPT_URL, $url);
+                        curl_setopt( $ch, CURLOPT_POST, 1);
+                        curl_setopt( $ch, CURLOPT_BINARYTRANSFER, true);
+                        curl_setopt( $ch, CURLOPT_POSTFIELDS, $inputJSON);
+                        curl_setopt( $ch, CURLOPT_HTTPHEADER, $json_headers);
+                        curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 2);
+                        curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 1); 
+                        curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
+                        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
+                        $result = curl_exec( $ch );
+                        curl_close( $ch );
+    }
+    /////////
 }
+////////////////
 
-
-else {
-                    $url = "https://bots.dialogflow.com/line/37d316a1-c0b5-46ca-9b85-e58789028d26/webhook";
-                    $headers = getallheaders();
-                    file_put_contents('headers.txt',json_encode($headers, JSON_PRETTY_PRINT));          
-                    file_put_contents('body.txt',file_get_contents('php://input'));
-                    $headers['Host'] = "bots.dialogflow.com";
-                    $json_headers = array();
-                    foreach($headers as $k=>$v){
-                        $json_headers[]=$k.":".$v;
-                    }
-                    $inputJSON = file_get_contents('php://input');
-                    $ch = curl_init();
-                    curl_setopt( $ch, CURLOPT_URL, $url);
-                    curl_setopt( $ch, CURLOPT_POST, 1);
-                    curl_setopt( $ch, CURLOPT_BINARYTRANSFER, true);
-                    curl_setopt( $ch, CURLOPT_POSTFIELDS, $inputJSON);
-                    curl_setopt( $ch, CURLOPT_HTTPHEADER, $json_headers);
-                    curl_setopt( $ch, CURLOPT_SSL_VERIFYHOST, 2);
-                    curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, 1); 
-                    curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, 1);
-                    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1);
-                    $result = curl_exec( $ch );
-                    curl_close( $ch );
-}
-}
 if (isset($mreply)) {
     $result = json_encode($mreply);
     $client->replyMessage($mreply);
