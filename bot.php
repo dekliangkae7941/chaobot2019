@@ -1,7 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "localhostchatbot";
+$username = "dekliangkae";
+$password = "0967358315";
 $dbconnect = "chatbot_chaokaset";
 $conn = mysqli_connect($servername, $username, $password, $dbconnect);
 // Check connection
