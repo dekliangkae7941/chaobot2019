@@ -5,14 +5,13 @@ $password = "0850212315";
 $dbconnect = "chatbot";
 $conn = mysqli_connect($servername, $username, $password, $dbconnect);
 // Check connection
-if ($conn->connect_error) {
+/*if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-echo "Connected successfully";
+echo "Connected successfully";*/
 #-----------------------------------------------------------#
 $sql = "SELECT category_id, category_name FROM market_category";
 $result = $conn->query($sql);
-
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
