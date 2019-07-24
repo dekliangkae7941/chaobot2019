@@ -14,7 +14,8 @@ echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
 $servername = "localhost";
 $username = "root";
 $password = "0850212315";
-$conn = new mysqli($servername, $username, $password);
+$dbconnect = "chatbot";
+$conn = mysqli_connect($servername, $username, $password, $dbconnect);
 
 // Check connection
 if ($conn->connect_error) {
