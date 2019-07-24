@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbconnect = "chatbot";
+$dbconnect = "chatbot_chaokaset";
 $conn = mysqli_connect($servername, $username, $password, $dbconnect);
 // Check connection
 if ($conn->connect_error) {
