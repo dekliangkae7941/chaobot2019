@@ -1,16 +1,22 @@
 <?php
-$dbConnect = mysqli_connect("host=127.0.0.1 dbname=chatbot user=root password=0850212315");
+$link = mysqli_connect("127.0.0.1", "root", "0850212315", "chatbot");
+
+if (!$link) {
+    echo "Error: Unable to connect to MySQL." . PHP_EOL;
+    echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+    echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+    exit;
+}
+
+echo "Success: A proper connection to MySQL was made! The my_db database is great." . PHP_EOL;
+echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
+
+//$dbConnect = pg_connect("host=127.0.0.1 dbname=chatbot user=root password=0850212315");
 //require_once '../vendor/autoload.php';
 #-----------------------------------------------------------#     
 	 // connect to database
-	mysql_query("chatbot $database"); // เลือกฐานข้อมูลที่ใช้
+	//mysql_query("chatbot $database"); // เลือกฐานข้อมูลที่ใช้
 	//$con = mysql_connect('127.0.0.1','root','0850212315');
-	if(!$dbConnect){
-		echo 'Not Connected To Server';
-	}
-	if(!mysqli_select_db($dbConnect,'chatbot')){
-		echo 'Database Not Select';
-	}
 //include('connect_db.php');
 #-------------------------[Include]-------------------------#
 require_once('./include/line_class.php');
