@@ -11,7 +11,7 @@ if (!$link) {
 echo "Success: A proper connection to MySQL was made! The my_db database is great." . PHP_EOL;
 echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
 */
-$servername = "127.0.0.1";
+$servername = "localhost";
 $username = "root";
 $password = "0850212315";
 $conn = new mysqli($servername, $username, $password);
