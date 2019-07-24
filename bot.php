@@ -5,21 +5,23 @@ $password = "0850212315";
 $dbconnect = "chatbot";
 $conn = mysqli_connect($servername, $username, $password, $dbconnect);
 // Check connection
-/*if ($conn->connect_error) {
+if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-echo "Connected successfully";*/
+echo "Connected successfully";
 #-----------------------------------------------------------#
 $sql = "SELECT category_id, category_name FROM market_category";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "category_id: " . $row["category_id"]. " - category_name: " . $row["category_name"]. "<br>";
+    while($row = mysqli_fetch_assoc($result)) {
+        echo "category_id: " . $row["category_id"]. " - category_name: " . $row["category_name"]."<br>";
     }
 } else {
     echo "0 results";
 }
+
+//////////////////////////////////////
 #-------------------------[Include]-------------------------#
 require_once('./include/line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
