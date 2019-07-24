@@ -117,7 +117,7 @@ elseif ($type == 'follow') {
 	    //$text = "เมื่อผู้ใช้กดติดตามบอท";
 	$sql = "INSERT INTO person (userId) VALUES ('".$userId."')";
 	$query = mysqli_query($conn,$sql);
-	echo $query;
+	var_dump($query);
 	if($query) {
 		echo "Record add successfully";
 	}
