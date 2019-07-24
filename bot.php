@@ -136,8 +136,6 @@ elseif ($type == 'follow') {
             )
         )
     );
-$query = "INSERT INTO person(userId) VALUE ('$userId',NOW())";
-    $resource = mysql_query($query) or die ("error".mysql_error());
 }
 /////////////
 elseif ($type == 'unfollow') {
