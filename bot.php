@@ -5,10 +5,10 @@ $password = "0850212315";
 $dbconnect = "chatbot";
 $conn = mysqli_connect($servername, $username, $password, $dbconnect);
 // Check connection
-/*if ($conn->connect_error) {
+if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-echo "Connected successfully";*/
+echo "Connected successfully";
 #-----------------------------------------------------------#    
 #-------------------------[Include]-------------------------#
 require_once('./include/line_class.php');
@@ -37,6 +37,8 @@ $msg_title     = $client->parseEvents()[0]['message']['title'];
 $msg_address   = $client->parseEvents()[0]['message']['address'];
 $msg_latitude  = $client->parseEvents()[0]['message']['latitude'];
 $msg_longitude = $client->parseEvents()[0]['message']['longitude'];
+<script async src="https://cse.google.com/cse.js?cx=009544805572183267925:wylrzy_8zug"></script>
+<div class="gcse-search"></div>
 #----Check title empty----#
 if (empty($msg_title)) {
     $msg_title = 'ตำแหน่งของคุณ คือ ';
