@@ -9,7 +9,7 @@
 
     $hostname="127.0.0.1";
 	$username="root";
-	$password="79417941";
+	$password="0850212315";
 	$dbname="chatbot";
 	$usertable="person";
 	$yourfield = "userId";
