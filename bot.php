@@ -115,12 +115,6 @@ elseif ($type == 'leave') {
 //////////////
 elseif ($type == 'follow') {
 	    //$text = "เมื่อผู้ใช้กดติดตามบอท";
-	$sql = "INSERT INTO person (userId) VALUES ('".$userId."')";
-	$query = mysqli_query($conn,$sql);
-	var_dump($query);
-	if($query) {
-		echo "Record add successfully";
-	}
     $mreply = array(
         'replyToken' => $replyToken,
         'messages' => array(
@@ -349,7 +343,12 @@ elseif ($msg_type == 'location') {
 /////////////
 else { 
     if ($command== 'myid') { 
-
+	$sql = "INSERT INTO person (userId) VALUES ('$userId')";
+	$query = mysqli_query($conn,$sql);
+	var_dump($query);
+	if($query) {
+		echo "Record add successfully";
+	}
     $mreply = array(
             'replyToken' => $replyToken,
             'messages' => array(
