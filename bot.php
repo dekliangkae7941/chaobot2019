@@ -1,6 +1,6 @@
 <?php
 $dbConnect = pg_connect("host=127.0.0.1 dbname=chatbot user=root password=0850212315");
-require_once '../vendor/autoload.php';
+//require_once '../vendor/autoload.php';
 #-----------------------------------------------------------#     
 	 // connect to database
 	//mysql_query("chatbot $database"); // เลือกฐานข้อมูลที่ใช้
