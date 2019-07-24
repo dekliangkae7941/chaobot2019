@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "0850212315";
+$password = "085021231";
 $dbconnect = "chatbot";
 $conn = mysqli_connect($servername, $username, $password, $dbconnect);
 // Check connection
@@ -9,7 +9,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 echo "Connected successfully";
-echo ($conn->connect_error);
 #-----------------------------------------------------------#
 $sql = "SELECT category_id, category_name FROM market_category";
 $result = mysqli_query($conn, $sql);
