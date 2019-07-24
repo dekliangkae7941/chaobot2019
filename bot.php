@@ -18,7 +18,7 @@ if (mysqli_num_rows($result) > 0) {
         echo "category_id: " . $row["category_id"]. " - category_name: " . $row["category_name"]."<br>";
     }
 } else {
-    echo " 0 results";
+    echo (mysqli_num_rows($result));
 }
 
 //////////////////////////////////////
