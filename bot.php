@@ -9,7 +9,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
 echo "Connected successfully";
-echo $conn->connect_error;
+echo ($conn->connect_error);
 #-----------------------------------------------------------#
 $sql = "SELECT category_id, category_name FROM market_category";
 $result = mysqli_query($conn, $sql);
