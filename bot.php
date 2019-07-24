@@ -343,12 +343,13 @@ elseif ($msg_type == 'location') {
 /////////////
 else { 
     if ($command== 'myid') { 
-	$sql = "INSERT INTO person (userId) VALUES ('$userId')";
-	$query = mysqli_query($conn,$sql);
-	var_dump($query);
-	if($query) {
-		echo "Record add successfully";
-	}
+	    	$sql = "INSERT INTO person (userId)
+		VALUES ('.$userId.')";
+		if ($conn->query($sql) === TRUE) {
+		    echo "New record created successfully";
+		} else {
+		    echo "Error: " . $sql . "<br>" . $conn->error;
+		}
     $mreply = array(
             'replyToken' => $replyToken,
             'messages' => array(
