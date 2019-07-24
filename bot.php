@@ -12,7 +12,6 @@
     
 
 #-------------------------[Include]-------------------------#
-include('connect_db.php');
 require_once('./include/line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
 #-------------------------[Token]-------------------------#
