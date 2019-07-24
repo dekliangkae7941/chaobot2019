@@ -1,14 +1,14 @@
 <?php
-$dbConnect = pg_connect("host=127.0.0.1 dbname=chatbot user=root password=0850212315");
+//$dbConnect = pg_connect("host=127.0.0.1 dbname=chatbot user=root password=0850212315");
 //require_once '../vendor/autoload.php';
 #-----------------------------------------------------------#     
 	 // connect to database
-	//mysql_query("chatbot $database"); // เลือกฐานข้อมูลที่ใช้
-	//$con = mysql_connect('127.0.0.1','root','');
-	if(!$dbConnect){
+	mysql_query("chatbot $database"); // เลือกฐานข้อมูลที่ใช้
+	$con = mysql_connect('127.0.0.1','root','0850212315');
+	if(!$con){
 		echo 'Not Connected To Server';
 	}
-	if(!mysqli_select_db($dbConnect,'chatbot')){
+	if(!mysqli_select_db($con,'chatbot')){
 		echo 'Database Not Select';
 	}
 //include('connect_db.php');
