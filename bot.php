@@ -5,12 +5,12 @@ $dbConnect = pg_connect("host=127.0.0.1 dbname=chatbot user=root password=085021
 	 // connect to database
 	//mysql_query("chatbot $database"); // เลือกฐานข้อมูลที่ใช้
 	//$con = mysql_connect('127.0.0.1','root','');
-	//if(!$con){
-	//	echo 'Not Connected To Server';
-	//}
-	//if(!mysqli_select_db($con,'chatbot')){
-	//	echo 'Database Not Select';
-	//}
+	if(!$dbConnect){
+		echo 'Not Connected To Server';
+	}
+	if(!mysqli_select_db($dbConnect,'chatbot')){
+		echo 'Database Not Select';
+	}
 //include('connect_db.php');
 #-------------------------[Include]-------------------------#
 require_once('./include/line_class.php');
