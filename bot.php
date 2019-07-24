@@ -366,13 +366,6 @@ else {
                 )
             )
         );
-	    $sql = "INSERT INTO person (userId)
-		VALUES ('.$userId.')";
-		if ($conn->query($sql) === TRUE) {
-		    echo "New record created successfully";
-		} else {
-		    echo "Error: " . $sql . "<br>" . $conn->error;
-		}
     }
     //////////
     elseif ($command== 'qr' || $command== 'Qr' || $command== 'QR' || $command== 'Qrcode' || $command== 'QRcode' || $command== 'qrcode') { 
