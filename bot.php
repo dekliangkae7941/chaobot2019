@@ -1,5 +1,5 @@
 <?php
-$link = mysqli_connect("127.0.0.1", "root", "0850212315", "chatbot");
+/*$link = mysqli_connect("127.0.0.1", "root", "0850212315", "chatbot");
 
 if (!$link) {
     echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -10,7 +10,21 @@ if (!$link) {
 
 echo "Success: A proper connection to MySQL was made! The my_db database is great." . PHP_EOL;
 echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
+*/
+$servername = "127.0.0.1";
+$username = "root";
+$password = "0850212315";
 
+try {
+    $conn = new PDO("mysql:host=$servername;dbname=chatbot", $username, $password);
+    // set the PDO error mode to exception
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connected successfully"; 
+    }
+catch(PDOException $e)
+    {
+    echo "Connection failed: " . $e->getMessage();
+    }
 //$dbConnect = pg_connect("host=127.0.0.1 dbname=chatbot user=root password=0850212315");
 //require_once '../vendor/autoload.php';
 #-----------------------------------------------------------#     
