@@ -9,7 +9,7 @@
 	//if(!mysqli_select_db($con,'chatbot')){
 	//	echo 'Database Not Select';
 	//}
-include('connect_db.php');
+//include('connect_db.php');
 #-------------------------[Include]-------------------------#
 require_once('./include/line_class.php');
 require_once('./unirest-php-master/src/Unirest.php');
