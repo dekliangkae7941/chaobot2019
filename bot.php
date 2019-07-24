@@ -14,17 +14,13 @@ echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
 $servername = "127.0.0.1";
 $username = "root";
 $password = "0850212315";
+$conn = new mysqli($servername, $username, $password);
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=chatbot", $username, $password);
-    // set the PDO error mode to exception
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully"; 
-    }
-catch(PDOException $e)
-    {
-    echo "Connection failed: " . $e->getMessage();
-    }
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} 
+echo "Connected successfully";
 //$dbConnect = pg_connect("host=127.0.0.1 dbname=chatbot user=root password=0850212315");
 //require_once '../vendor/autoload.php';
 #-----------------------------------------------------------#     
