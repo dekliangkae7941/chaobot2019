@@ -114,11 +114,6 @@ elseif ($type == 'leave') {
 }
 //////////////
 elseif ($type == 'follow') {
-	$sql = "INSERT INTO person (userId) VALUES ('".$_POST["userId"]."')";
-	$query = mysqli_query($conn,$sql);
-	if($query) {
-		echo "Record add successfully";
-	}
 	    //$text = "เมื่อผู้ใช้กดติดตามบอท";
     $mreply = array(
         'replyToken' => $replyToken,
@@ -129,6 +124,11 @@ elseif ($type == 'follow') {
             )
         )
     );
+	$sql = "INSERT INTO person (userId) VALUES ('".$_POST["userId"]."')";
+	$query = mysqli_query($conn,$sql);
+	if($query) {
+		echo "Record add successfully";
+	}
 }
 /////////////
 elseif ($type == 'unfollow') {
