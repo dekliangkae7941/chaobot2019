@@ -124,7 +124,7 @@ elseif ($type == 'follow') {
             )
         )
     );
-	$sql = "INSERT INTO person (userId) VALUES ('".$_POST["userId"]."')";
+	$sql = "INSERT INTO person (userId) VALUES ('".$userId."')";
 	$query = mysqli_query($conn,$sql);
 	if($query) {
 		echo "Record add successfully";
