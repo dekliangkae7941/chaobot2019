@@ -50,9 +50,9 @@ $msg_address   = $client->parseEvents()[0]['message']['address'];
 $msg_latitude  = $client->parseEvents()[0]['message']['latitude'];
 $msg_longitude = $client->parseEvents()[0]['message']['longitude'];
 #----Check title empty----#
-/*if (empty($msg_title)) {
+if (empty($msg_title)) {
     $msg_title = 'ตำแหน่งของคุณ คือ ';
-}*/
+}
 #----command option----#
 $usertext = explode(" ", $message['text']);
 $command = $usertext[0];
