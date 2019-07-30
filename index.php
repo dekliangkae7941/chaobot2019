@@ -6,7 +6,7 @@
   $text = $jsonData["events"][0]["message"]["text"];
   $timestamp = $jsonData["events"][0]["timestamp"];
   
-  $link = mysqli_connect("127.0.0.1", "dekliangkae", "0967358315", "chatbot_chaokaset");
+  $link = mysqli_connect("localhost", "dekliangkae", "0967358315", "chatbot_chaokaset");
 
   if (!$link) {
       echo "Error: Unable to connect to MySQL." . PHP_EOL;
