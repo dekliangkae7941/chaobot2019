@@ -6,8 +6,8 @@
   $text = $jsonData["events"][0]["message"]["text"];
   $timestamp = $jsonData["events"][0]["timestamp"];
   $servername = "localhost";
-  $username = "dekliangkae";
-  $password = "0967358315";
+  $username = "root";
+  $password = "";
   $dbname = "chatbot_chaokaset";
   $mysql = new mysqli($servername, $username, $password, $dbname);
   mysqli_set_charset($mysql, "utf8");
