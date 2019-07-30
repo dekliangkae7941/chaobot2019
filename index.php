@@ -9,7 +9,8 @@
   $username = "root";
   $password = "";
   $dbname = "chatbot_chaokaset";
-  $mysql = new mysqli($servername, $username, $password, $dbname);
+  $mysql = mysql_connect('127.0.0.1:3306', 'root', '');
+  //$mysql = new mysqli($servername, $username, $password, $dbname);
   mysqli_set_charset($mysql, "utf8");
   if ($mysql->connect_error){
   $errorcode = $mysql->connect_error;
