@@ -5,15 +5,12 @@
   $userID = $jsonData["events"][0]["source"]["userId"];
   $text = $jsonData["events"][0]["message"]["text"];
   $timestamp = $jsonData["events"][0]["timestamp"];
-  $url=parse_url(getenv("CLEARDB_DATABASE_URL"));
-
+  //$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
   /*$servername = $url["localhost"];
   $username = $url["dekliangkae"];
   $password = $url["0967358315"];
   $dbname = substr($url["chatbot_chaokaset"],1);
-
   $mysql = mysql_connect($server, $username, $password);
-
   mysql_select_db($dbname);*/
 
   $servername = "localhost";
