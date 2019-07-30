@@ -9,7 +9,8 @@
   $username = "dekliangkae";
   $password = "0967358315";
   $dbname = "chatbot_chaokaset";
-  $mysql = new mysqli($servername, $username, $password, $dbname);
+  //$db = mysql_connect('localhost:/var/lib/mysql/mysql.sock', 'Username', 'Password');
+  $mysql = new mysqli('localhost:/var/lib/mysql/mysql.sock', $username, $password, $dbname);
   mysqli_set_charset($mysql, "utf8");
   if ($mysql->connect_error){
   $errorcode = $mysql->connect_error;
