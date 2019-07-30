@@ -21,7 +21,7 @@
   $password = "0967358315";
   $dbname = "chatbot_chaokaset";
   //$mysql = mysql_connect($servername, $username, $password, $dbname);
-  $mysql = new mysqli('127.0.0.1:3306', $username, $password, $dbname) or die("Unable to connect");
+  $mysql = new mysqli('localhost', $username, $password, $dbname) or die("Unable to connect");
   echo "Great work";
   mysqli_set_charset($mysql, "utf8");
   if ($mysql->connect_error){
