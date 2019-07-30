@@ -44,7 +44,7 @@
     $replyText["text"] = "สวัสดีคุณ $Name $Surname (#$CustomerID)";
   }
   $lineData['URL'] = "https://api.line.me/v2/bot/message/reply";
-  $lineData['AccessToken'] = "(เเก้เป็น Channel AccessToken ของเราเลยครับ)";
+  $lineData['AccessToken'] = "pZmLfAv73zYnio19mFJo2hudRTgr7y8FbMdAayR7VXep+rZyVt1NAAEL+ZcsjfbrA7VhuzmpTUfkkYIIkgjdfohQ5bf8XV781/5J/gIy5vzhQPrIgSXQ3Uj23DnEpFiCa+MC60K2WexRcqsdgTDQ6gdB04t89/1O/w1cDnyilFU=";
   $replyJson["replyToken"] = $replyToken;
   $replyJson["messages"][0] = $replyText;
   $encodeJson = json_encode($replyJson);
