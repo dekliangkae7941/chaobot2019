@@ -5,15 +5,20 @@
   $userID = $jsonData["events"][0]["source"]["userId"];
   $text = $jsonData["events"][0]["message"]["text"];
   $timestamp = $jsonData["events"][0]["timestamp"];
-  //$url=parse_url(getenv("CLEARDB_DATABASE_URL"));
-  /*$servername = $url["localhost"];
-  $username = $url["dekliangkae"];
-  $password = $url["0967358315"];
-  $dbname = substr($url["chatbot_chaokaset"],1);
-  $mysql = mysql_connect($server, $username, $password);
-  mysql_select_db($dbname);*/
+  
+  $link = mysqli_connect("127.0.0.1", "dekliangkae", "0967358315", "chatbot_chaokaset");
 
-  $servername = "localhost";
+  if (!$link) {
+      echo "Error: Unable to connect to MySQL." . PHP_EOL;
+      echo "Debugging errno: " . mysqli_connect_errno() . PHP_EOL;
+      echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
+      exit;
+  }
+
+  echo "Success: A proper connection to MySQL was made! The my_db database is great." . PHP_EOL;
+  echo "Host information: " . mysqli_get_host_info($link) . PHP_EOL;
+
+  /*$servername = "localhost";
   $username = "dekliangkae";
   $password = "0967358315";
   $dbname = "chatbot_chaokaset";
@@ -24,7 +29,7 @@
   if ($mysql->connect_error){
   $errorcode = $mysql->connect_error;
   print("MySQL(Connection)> ".$errorcode);
-  }
+  }*/
   function sendMessage($replyJson, $sendInfo){
           $ch = curl_init($sendInfo["URL"]);
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
