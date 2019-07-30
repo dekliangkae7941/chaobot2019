@@ -10,8 +10,8 @@
 
 
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "dekliangkae";
+$password = "0967358315";
 $dbname = "chatbot_chaokaset";
 
 // Create connection
