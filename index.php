@@ -1,12 +1,12 @@
 <?php
-  $LINEData = file_get_contents('php://input');
+  /*$LINEData = file_get_contents('php://input');
   $jsonData = json_decode($LINEData,true);
   $replyToken = $jsonData["events"][0]["replyToken"];
   $userID = $jsonData["events"][0]["source"]["userId"];
   $text = $jsonData["events"][0]["message"]["text"];
-  $timestamp = $jsonData["events"][0]["timestamp"];
+  $timestamp = $jsonData["events"][0]["timestamp"];*/
   
-  $link = mysqli_connect("localhost", "root", " ", "chatbot_chaokaset");
+  $link = mysqli_connect("localhost", "root", "", "chatbot_chaokaset");
 
   if (!$link) {
       echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -29,7 +29,7 @@
   if ($mysql->connect_error){
   $errorcode = $mysql->connect_error;
   print("MySQL(Connection)> ".$errorcode);
-  }*/
+  }
   function sendMessage($replyJson, $sendInfo){
           $ch = curl_init($sendInfo["URL"]);
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -65,5 +65,5 @@
   $encodeJson = json_encode($replyJson);
   $results = sendMessage($encodeJson,$lineData);
   echo $results;
-  http_response_code(200);
+  http_response_code(200);*/
 
