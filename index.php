@@ -5,7 +5,7 @@
   $userID = $jsonData["events"][0]["source"]["userId"];
   $text = $jsonData["events"][0]["message"]["text"];
   $timestamp = $jsonData["events"][0]["timestamp"];
-  $servername = "127.0.0.1";
+  $servername = "localhost";
   $username = "root";
   $password = "";
   $dbname = "chatbot_chaokaset";
