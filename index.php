@@ -5,11 +5,11 @@
   $userID = $jsonData["events"][0]["source"]["userId"];
   $text = $jsonData["events"][0]["message"]["text"];
   $timestamp = $jsonData["events"][0]["timestamp"];
-  $servername = "localhost";
+  $servername = "localhost:3306";
   $username = "root";
   $password = "";
   $dbname = "chatbot_chaokaset";
-  $mysql = mysql_connect('127.0.0.1:3306', 'root', '');
+  $mysql = mysql_connect($servername, $username, $password, $dbname);
   //$mysql = new mysqli($servername, $username, $password, $dbname);
   mysqli_set_charset($mysql, "utf8");
   if ($mysql->connect_error){
