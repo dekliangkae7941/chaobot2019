@@ -5,12 +5,12 @@
   $userID = $jsonData["events"][0]["source"]["userId"];
   $text = $jsonData["events"][0]["message"]["text"];
   $timestamp = $jsonData["events"][0]["timestamp"];
-  $servername = "localhost";
+  $servername = "localhost:/var/lib/mysql/mysql.sock";
   $username = "dekliangkae";
   $password = "0967358315";
   $dbname = "chatbot_chaokaset";
   //$db = mysql_connect('localhost:/var/lib/mysql/mysql.sock', 'Username', 'Password');
-  $mysql = new mysqli('localhost:/var/lib/mysql/mysql.sock', $username, $password, $dbname);
+  $mysql = new mysqli($servername, $username, $password, $dbname);
   mysqli_set_charset($mysql, "utf8");
   if ($mysql->connect_error){
   $errorcode = $mysql->connect_error;
