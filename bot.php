@@ -1,26 +1,12 @@
 <?php
-$servername = "localhostchatbot";
-$username = "dekliangkae";
-$password = "0967358315";
-$dbconnect = "chatbot_chaokaset";
-$conn = mysqli_connect($servername, $username, $password, $dbconnect);
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+$dbConnect = pg_connect("host=ec2-107-22-211-248.compute-1.amazonaws.com dbname=dant72mtqngrqg user=zzeiglpdbgcsup password=357b5ef3838e36150679d259aeb37a2c9d2ec1dafb8ae5c90e7669d040874a9e");
+
+if ($dbConnect->connect_error) {
+    die("Connection failed: " . $dbConnect->connect_error);
 } 
 echo "Connected successfully";
 #-----------------------------------------------------------#
-$sql = "SELECT category_id, category_name FROM market_category";
-$result = mysqli_query($conn, $sql);
-if (mysqli_num_rows($result) > 0) {
-    // output data of each row
-    while($row = mysqli_fetch_assoc($result)) {
-        echo "category_id: " . $row["category_id"]. " - category_name: " . $row["category_name"]."<br>";
-    }
-} else {
-    echo " 0 result";
-}
-
 //////////////////////////////////////
 #-------------------------[Include]-------------------------#
 require_once('./include/line_class.php');
