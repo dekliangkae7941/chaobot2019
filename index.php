@@ -1,56 +1,18 @@
 <?php
-  /*$LINEData = file_get_contents('php://input');
+  $LINEData = file_get_contents('php://input');
   $jsonData = json_decode($LINEData,true);
   $replyToken = $jsonData["events"][0]["replyToken"];
   $userID = $jsonData["events"][0]["source"]["userId"];
   $text = $jsonData["events"][0]["message"]["text"];
-  $timestamp = $jsonData["events"][0]["timestamp"];*/
-  
-
-
-
-$servername = "localhost";
-$username = "dekliangkae";
-$password = "0967358315";
-$dbname = "chatbot_chaokaset";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-
-// sql to create table
-$sql = "CREATE TABLE MyGuests (
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-firstname VARCHAR(30) NOT NULL,
-lastname VARCHAR(30) NOT NULL,
-email VARCHAR(50),
-reg_date TIMESTAMP
-)";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Table MyGuests created successfully";
-} else {
-    echo "Error creating table: " . $conn->error;
-}
-
-$conn->close();
-
-
-  /*$servername = "localhost";
-  $username = "dekliangkae";
-  $password = "0967358315";
-  $dbname = "chatbot_chaokaset";
-  //$mysql = mysql_connect($servername, $username, $password, $dbname);
-  $mysql = new mysqli('localhost', $username, $password, $dbname) or die("Unable to connect");
-  echo "Great work";
-  mysqli_set_charset($mysql, "utf8");
-  if ($mysql->connect_error){
-  $errorcode = $mysql->connect_error;
-  print("MySQL(Connection)> ".$errorcode);
-  }
+  $timestamp = $jsonData["events"][0]["timestamp"];
+#--------------------------------------------------------------------------------------------------------------------#
+  $dbconn = pg_connect("host=ec2-107-22-211-248.compute-1.amazonaws.com dbname=dant72mtqngrqg user=zzeiglpdbgcsup password=357b5ef3838e36150679d259aeb37a2c9d2ec1dafb8ae5c90e7669d040874a9e");
+  if (!$dbconn){
+  echo "<center><h1>Doesn't work =(</h1></center>";
+  }else
+   echo "<center><h1>Good connection</h1></center>";
+  pg_close($dbconn);
+#--------------------------------------------------------------------------------------------------------------------#
   function sendMessage($replyJson, $sendInfo){
           $ch = curl_init($sendInfo["URL"]);
           curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -65,12 +27,12 @@ $conn->close();
           curl_close($ch);
     return $result;
   }
-  $mysql->query("INSERT INTO `LOG`(`UserID`, `Text`, `Timestamp`) VALUES ('$userID','$text','$timestamp')");
-  $getUser = $mysql->query("SELECT * FROM `Customer` WHERE `UserID`='$userID'");
+  $mysql->query("INSERT INTO 'LOG'('UserID', 'Text', 'Timestamp') VALUES ('$userID','$text','$timestamp')");
+  $getUser = $mysql->query("SELECT * FROM 'Customer' WHERE 'UserID'='$userID'");
   $getuserNum = $getUser->num_rows;
   $replyText["type"] = "text";
   if ($getuserNum == "0"){
-    $replyText["text"] = "สวัสดีคับบบบ";
+    $replyText["text"] = "vbvb";
   } else {
     while($row = $getUser->fetch_assoc()){
       $Name = $row['Name'];
@@ -86,5 +48,7 @@ $conn->close();
   $encodeJson = json_encode($replyJson);
   $results = sendMessage($encodeJson,$lineData);
   echo $results;
-  http_response_code(200);*/
+  http_response_code(200);
+#------------------------------------------------------------------------------------------------------------#
 
+?>
